@@ -1,0 +1,10 @@
+package org.police.passportsystem.test;
+
+import java.util.Date;
+
+public class PassportTest {
+
+    private String name;
+    private Date   birth;
+
+}

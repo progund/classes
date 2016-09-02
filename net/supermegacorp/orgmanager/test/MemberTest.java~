@@ -1,0 +1,16 @@
+package net.supermegacorp.orgmanager.test;
+
+import net.supermegacorp.orgmanager.Member;
+
+public class MemberTest {
+
+    public static void main(String[] args) {
+
+        Member m = new Member();
+        m.name = "Ada";
+        // System.out.println(m);
+        System.out.println(m.name);
+
+    }
+    
+}
