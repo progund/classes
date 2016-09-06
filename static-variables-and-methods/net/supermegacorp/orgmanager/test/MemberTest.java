@@ -12,6 +12,15 @@ public class MemberTest {
       Member charles = new Member("Charles", "charles __AT__ babbage.net");
       System.out.println(charles);
 
+      /*
+        Member noone = new Member("Dummy", null);
+        System.out.println(noone);
+      */
+      
+      System.out.println("Ada's name:     " + ada.name());
+      System.out.println("Ada's email:    " + ada.email());
+      System.out.println("Charle's name:  " + charles.name());
+      System.out.println("Charle's email: " + charles.email());
 
 
       

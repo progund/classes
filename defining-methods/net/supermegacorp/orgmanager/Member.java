@@ -7,9 +7,7 @@ public class Member {
 
   public Member(String name, String email) {
     this(name);
-    if (email.contains("@")) {
-      this.email = email;
-    }
+    setEmail(email);
   }
 
  
@@ -17,9 +15,22 @@ public class Member {
     this.name = name;
   }
 
+  public void setEmail(String email) {
+    if (email.contains("@")) {
+      this.email = email;
+    }
+  }
+  
   public String toString() {
     return name + " " + email;
   }
     
+  public String name() {
+    return name;
+  }
+  
+  public String email() {
+    return email;
+  }
 
 }
