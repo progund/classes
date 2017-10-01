@@ -39,52 +39,51 @@ public class MemberManager{
      */
 
     /*
-       * Present options to the user
-       */
-      cli.msgln("Menu");
-      cli.msgln(" 1 - to add member");
-      cli.msgln(" 2 - to list members");
-      cli.msgln(" 3 - to quit");
+     * Present options to the user
+     */
+    cli.msgln("Menu");
+    cli.msgln(" 1 - to add member");
+    cli.msgln(" 2 - to list members");
+    cli.msgln(" 3 - to quit");
     
-      /*
-       * Read command from user
-       */
-      String command = cli.askUser("Enter your choice");
+    /*
+     * Read command from user
+     */
+    String command = cli.askUser("Enter your choice");
     
+    /*
+     * Based on command, take different actions
+     */
+    if (command.equals("1")) {
+      Member m   = cli.readNewMember();
+      cli.msgln("Created member: " + m);
       /*
-       * Based on command, take different actions
+       * add the member to the ArrayList
        */
-      if (command.equals("1")) {
-        Member m   = cli.readNewMember();
-        cli.msgln("Created member: " + m);
-        /*
-         * add the member to the ArrayList
-         */
-      } else if (command.equals("2")) {
-        cli.msgln("No members - you need to add code to add member");
-        cli.msgln("and then code to print 'em out");
-        /* loop through the ArrayList and print the members, 
-           hint: the CLI class has an (instance) method called outputMember
-        */
+    } else if (command.equals("2")) {
+      cli.msgln("No members - you need to add code to add member");
+      cli.msgln("and then code to print 'em out");
+      /* loop through the ArrayList and print the members, 
+         hint: the CLI class has an (instance) method called outputMember
+      */
       
-        for (Member m : members) {
-          cli.outputMember(m);
-        }        
-      } else if (command.equals("3")) {
-        cli.msgln("Good bye...");
-        saveToFile();
-        /* break out of the loop */
-        /* Two ways (chose one):
-           1. use the keyword break
-           2. loop (above) over a boolean variable which you (here) se to false
-        */
-      } else {
-        cli.msgln("Invalid choice?");
-      }
+      for (Member m : members) {
+        cli.outputMember(m);
+      }        
+    } else if (command.equals("3")) {
+      cli.msgln("Good bye...");
+      saveToFile();
+      /* break out of the loop */
+      /* Two ways (chose one):
+         1. use the keyword break
+         2. loop (above) over a boolean variable which you (here) se to false
+      */
+    } else {
+      cli.msgln("Invalid choice?");
     }
     
   }
-
+  
   // 
   // Below you'll find methods dealing with storing and reading back
   // users from a file (members.data)
