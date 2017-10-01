@@ -61,7 +61,8 @@ public class MemberManager{
          * add the member to the ArrayList
          */
       } else if (command.equals("2")) {
-        cli.msgln("No members?");
+        cli.msgln("No members - you need to add code to add member");
+        cli.msgln("and then code to print 'em out");
         /* loop through the ArrayList and print the members, 
            hint: the CLI class has an (instance) method called outputMember
         */
