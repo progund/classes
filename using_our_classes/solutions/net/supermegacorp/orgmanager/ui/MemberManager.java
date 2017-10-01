@@ -124,7 +124,7 @@ public class MemberManager {
               i.remove();
             }
           }
-          /* Using lambda and streams */
+          /* Alternative version - Using a lambda expression */
           members.removeIf(m -> m.name().contains(name));
         }
       } else {
