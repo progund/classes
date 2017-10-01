@@ -70,9 +70,10 @@ public class MemberManager {
       cli.msgln("Good bye...");
       saveToFile();
       /* break out of the loop */
-      /* Two ways (chose one):
+      /* Three ways (chose one):
          1. use the keyword break
-         2. loop (above) over a boolean variable which you (here) se to false
+         2. use the keyword return (you can return from a void method!)
+         3. loop (above) over a boolean variable which you (here) se to false
       */
     } else {
       cli.msgln("Invalid choice?");
