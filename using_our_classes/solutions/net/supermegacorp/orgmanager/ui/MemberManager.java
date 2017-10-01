@@ -1,26 +1,21 @@
 package net.supermegacorp.orgmanager.ui;
 
-import net.supermegacorp.orgmanager.domain.Member;
-import net.supermegacorp.orgmanager.ui.CLI;
-import java.util.List;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
+import net.supermegacorp.orgmanager.domain.Member;
 
-import java.io.FileOutputStream;
-import java.io.ObjectOutputStream;
-import java.io.IOException;
-import java.io.FileInputStream;
-import java.io.ObjectInputStream;
-
-
-
-public class MemberManager{
+public class MemberManager {
 
   private CLI cli;
   private List<Member> members;
-  private String membersFile="members.data";
+  private String membersFile = "members.data";
 
-  
   public MemberManager() {
     cli = new CLI();
     members = new ArrayList<Member>();
@@ -30,16 +25,16 @@ public class MemberManager{
   public void welcome() {
     cli.msgln("Starting Member manager");
   }
-  
+
   public void goodbye() {
     cli.msgln("Good bye");
   }
-  
+
   public void menuLoop() {
-    /* 
-     * Add some kind of loop here - hint, use while 
+    /*
+     * Add some kind of loop here - hint, use while
      */
-    while(true) {
+    while (true) {
 
       /*
        * Present options to the user
@@ -49,17 +44,17 @@ public class MemberManager{
       cli.msgln(" 2 - to list members");
       cli.msgln(" 3 - to quit");
       cli.msgln(" 4 - to remove a member");
-    
+
       /*
        * Read command from user
        */
       String command = cli.askUser("Enter your choice");
-    
+
       /*
        * Based on command, take different actions
        */
       if (command.equals("1")) {
-        Member m   = cli.readNewMember();
+        Member m = cli.readNewMember();
         cli.msgln("Created member: " + m);
         /*
          * add the member to the ArrayList
@@ -69,13 +64,13 @@ public class MemberManager{
 
       } else if (command.equals("2")) {
         cli.msgln("No members?");
-        /* loop through the ArrayList and print the members, 
+        /* loop through the ArrayList and print the members,
            hint: the CLI class has an (instance) method called outputMember
         */
-      
+
         for (Member m : members) {
           cli.outputMember(m);
-        }        
+        }
       } else if (command.equals("3")) {
         cli.msgln("Good bye...");
         saveToFile();
@@ -123,8 +118,8 @@ public class MemberManager{
           /* Iterator */
           Iterator<Member> i = members.iterator();
           while (i.hasNext()) {
-            Member m = i.next(); 
-            if (m.name().contains(name)) {          
+            Member m = i.next();
+            if (m.name().contains(name)) {
               cli.msg("Removing member: " + m);
               i.remove();
             }
@@ -136,25 +131,24 @@ public class MemberManager{
         cli.msgln("Invalid choice?");
       }
     }
-    
   }
 
-  private void saveToFile(){
-    try{
-      FileOutputStream fos= new FileOutputStream(membersFile);
-      ObjectOutputStream oos= new ObjectOutputStream(fos);
+  private void saveToFile() {
+    try {
+      FileOutputStream fos = new FileOutputStream(membersFile);
+      ObjectOutputStream oos = new ObjectOutputStream(fos);
       oos.writeObject(members);
       oos.close();
       oos.flush();
       fos.flush();
       fos.close();
-    }catch(IOException e){
+    } catch (IOException e) {
       e.printStackTrace();
     }
   }
 
   @SuppressWarnings({"unchecked"})
-  private void readFromFile(){
+  private void readFromFile() {
     try {
       FileInputStream fis = new FileInputStream(membersFile);
       ObjectInputStream ois = new ObjectInputStream(fis);
@@ -162,18 +156,16 @@ public class MemberManager{
       members = (ArrayList) readObject;
       ois.close();
       fis.close();
-    } catch(java.io.FileNotFoundException c){
+    } catch (java.io.FileNotFoundException c) {
       cli.msgln("File not found");
       return;
-    }catch(IOException ioe){
+    } catch (IOException ioe) {
       ioe.printStackTrace();
       return;
-    }catch(ClassNotFoundException c){
+    } catch (ClassNotFoundException c) {
       cli.msgln("Class not found");
       c.printStackTrace();
       return;
     }
-    
   }
-  
 }

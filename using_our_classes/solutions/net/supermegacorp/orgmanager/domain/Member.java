@@ -13,7 +13,6 @@ public class Member implements Serializable {
     setEmail(email);
   }
 
- 
   public Member(String name) {
     this.name = name;
   }
@@ -23,19 +22,18 @@ public class Member implements Serializable {
       this.email = email;
     }
   }
-    
+
   public String toString() {
     return name + separator + email;
   }
-    
+
   public String name() {
     return name;
   }
-  
+
   public String email() {
     return email;
   }
-
 
   public static String getSeparator() {
     return separator;
