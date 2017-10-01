@@ -86,44 +86,48 @@ public class MemberManager{
         */
         break;
       } else if (command.equals("4")) {
-        String name = cli.askUser("name of member to remove?: ");
-        /*Classic for loop - buggy */
-        /*
-        for (int i=0; i<members.size(); i++) {
-          Member m = members.get(i);
-          if (m.name().contains(name)) {
+        String name = cli.askUser("Name of member to remove?: ");
+        if (name.equals("")) {
+          cli.msgln("Invalid name");
+        } else {
+          /*Classic for loop - buggy */
+          /*
+            for (int i=0; i<members.size(); i++) {
+            Member m = members.get(i);
+            if (m.name().contains(name)) {
             cli.msg("Removing member: " + m);
             members.remove(m);
-          }
-        }
-        */
-        /*Classic for loop - buggy version with a crash*/
-        /*
-        int size = members.size();
-        for (int i=0; i<size; i++) {
-          Member m = members.get(i);
-          if (m.name().contains(name)) {
+            }
+            }
+          */
+          /*Classic for loop - buggy version with a crash*/
+          /*
+            int size = members.size();
+            for (int i=0; i<size; i++) {
+            Member m = members.get(i);
+            if (m.name().contains(name)) {
             cli.msg("Removing member: " + m);
             members.remove(m);
-          }
-        }
-        */
-        /* 'New' for each loop */
-        /*
-        for (Member m : members) {
-          if (m.name().contains(name)) {
+            }
+            }
+          */
+          /* 'New' for each loop */
+          /*
+            for (Member m : members) {
+            if (m.name().contains(name)) {
             cli.msg("Removing member: " + m);
             members.remove(m);
-          }
-        }
-        */
-        /* Iterator */
-        Iterator<Member> i = members.iterator();
-        while (i.hasNext()) {
-          Member m = i.next(); 
-          if (m.name().contains(name)) {          
-            cli.msg("Removing member: " + m);
-            i.remove();
+            }
+            }
+          */
+          /* Iterator */
+          Iterator<Member> i = members.iterator();
+          while (i.hasNext()) {
+            Member m = i.next(); 
+            if (m.name().contains(name)) {          
+              cli.msg("Removing member: " + m);
+              i.remove();
+            }
           }
         }
       } else {
