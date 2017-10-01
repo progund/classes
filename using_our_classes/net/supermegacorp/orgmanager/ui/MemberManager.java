@@ -1,6 +1,6 @@
 package net.supermegacorp.orgmanager.ui;
 
-import net.supermegacorp.orgmanager.Member;
+import net.supermegacorp.orgmanager.domain.Member;
 import net.supermegacorp.orgmanager.ui.CLI;
 import java.util.List;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package net.supermegacorp.orgmanager;
+package net.supermegacorp.orgmanager.domain;
 
 import java.io.Serializable;
 
