@@ -1,10 +1,8 @@
 package net.supermegacorp.orgmanager.main;
 
-import net.supermegacorp.orgmanager.Member;
-import net.supermegacorp.orgmanager.ui.CLI;
 import net.supermegacorp.orgmanager.ui.MemberManager;
 
-public class Main{
+public class MemberSystemMain{
 
     public static void main(String[] args) {
 
