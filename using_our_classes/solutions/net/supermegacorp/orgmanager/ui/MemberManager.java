@@ -4,12 +4,14 @@ import net.supermegacorp.orgmanager.Member;
 import net.supermegacorp.orgmanager.ui.CLI;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 import java.io.IOException;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
+
 
 
 public class MemberManager{
@@ -37,66 +39,97 @@ public class MemberManager{
     /* 
      * Add some kind of loop here - hint, use while 
      */
-      /* TODO: remove */
     while(true) {
-      /* EO remove */
 
       /*
-     * Present options to the user
-     */
-    cli.msgln("Menu");
-    cli.msgln(" 1 - to add member");
-    cli.msgln(" 2 - to list members");
-    cli.msgln(" 3 - to quit");
-    
-    /*
-     * Read command from user
-     */
-    String command = cli.askUser("Enter your choice");
-    
-    /*
-     * Based on command, take different actions
-     */
-    if (command.equals("1")) {
-      Member m   = cli.readNewMember();
-      cli.msgln("Created member: " + m);
-      /*
-       * add the member to the ArrayList
+       * Present options to the user
        */
+      cli.msgln("Menu");
+      cli.msgln(" 1 - to add member");
+      cli.msgln(" 2 - to list members");
+      cli.msgln(" 3 - to quit");
+      cli.msgln(" 4 - to remove a member");
+    
+      /*
+       * Read command from user
+       */
+      String command = cli.askUser("Enter your choice");
+    
+      /*
+       * Based on command, take different actions
+       */
+      if (command.equals("1")) {
+        Member m   = cli.readNewMember();
+        cli.msgln("Created member: " + m);
+        /*
+         * add the member to the ArrayList
+         */
 
-      /* TODO: remove */
-      members.add(m);
-      /* EO remove */
+        members.add(m);
 
-    } else if (command.equals("2")) {
-      cli.msgln("No members?");
-      /* loop through the ArrayList and print the members, 
-         hint: the CLI class has an (instance) method called outputMember
-      */
+      } else if (command.equals("2")) {
+        cli.msgln("No members?");
+        /* loop through the ArrayList and print the members, 
+           hint: the CLI class has an (instance) method called outputMember
+        */
       
-      /* TODO: remove */
-      for (Member m : members) {
-        cli.outputMember(m);
-      }        
-      /* EO remove */
-    } else if (command.equals("3")) {
-      cli.msgln("Good bye...");
-      saveToFile();
-      /* TODO: remove */
+        for (Member m : members) {
+          cli.outputMember(m);
+        }        
+      } else if (command.equals("3")) {
+        cli.msgln("Good bye...");
+        saveToFile();
+        /* break out of the loop */
+        /* Two ways (chose one):
+           1. use the keyword break
+           2. loop (above) over a boolean variable which you (here) se to false
+        */
         break;
-      /* EO remove */
-
-      /* break out of the loop */
-      /* Two ways (chose one):
-         1. use the keyword break
-         2. loop (above) over a boolean variable which you (here) se to false
-      */
-    } else {
-      cli.msgln("Invalid choice?");
+      } else if (command.equals("4")) {
+        String name = cli.askUser("name of member to remove?: ");
+        /*Classic for loop - buggy */
+        /*
+        for (int i=0; i<members.size(); i++) {
+          Member m = members.get(i);
+          if (m.name().contains(name)) {
+            cli.msg("Removing member: " + m);
+            members.remove(m);
+          }
+        }
+        */
+        /*Classic for loop - buggy version with a crash*/
+        /*
+        int size = members.size();
+        for (int i=0; i<size; i++) {
+          Member m = members.get(i);
+          if (m.name().contains(name)) {
+            cli.msg("Removing member: " + m);
+            members.remove(m);
+          }
+        }
+        */
+        /* 'New' for each loop */
+        /*
+        for (Member m : members) {
+          if (m.name().contains(name)) {
+            cli.msg("Removing member: " + m);
+            members.remove(m);
+          }
+        }
+        */
+        /* Iterator */
+        Iterator<Member> i = members.iterator();
+        while (i.hasNext()) {
+          Member m = i.next(); 
+          if (m.name().contains(name)) {          
+            cli.msg("Removing member: " + m);
+            i.remove();
+          }
+        }
+      } else {
+        cli.msgln("Invalid choice?");
+      }
     }
-      /* TODO: remove */
-    }
-      /* EO remove */
     
   }
 
