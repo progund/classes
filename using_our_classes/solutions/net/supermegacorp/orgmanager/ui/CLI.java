@@ -1,6 +1,6 @@
 package net.supermegacorp.orgmanager.ui;
 
-import net.supermegacorp.orgmanager.Member;
+import net.supermegacorp.orgmanager.domain.Member;
 import java.io.PrintStream;
 import java.io.InputStream;
 import java.util.Scanner;

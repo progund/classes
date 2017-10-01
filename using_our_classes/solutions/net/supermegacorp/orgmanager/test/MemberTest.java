@@ -1,6 +1,6 @@
 package net.supermegacorp.orgmanager.test;
 
-import net.supermegacorp.orgmanager.Member;
+import net.supermegacorp.orgmanager.domain.Member;
 
 public class MemberTest{
 

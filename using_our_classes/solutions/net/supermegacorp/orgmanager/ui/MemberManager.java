@@ -1,6 +1,6 @@
 package net.supermegacorp.orgmanager.ui;
 
-import net.supermegacorp.orgmanager.Member;
+import net.supermegacorp.orgmanager.domain.Member;
 import net.supermegacorp.orgmanager.ui.CLI;
 import java.util.List;
 import java.util.ArrayList;
@@ -129,6 +129,8 @@ public class MemberManager{
               i.remove();
             }
           }
+          /* Using lambda and streams */
+          members.removeIf(m -> m.name().contains(name));
         }
       } else {
         cli.msgln("Invalid choice?");
