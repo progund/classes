@@ -31,7 +31,11 @@ public class MemberManager {
 
   public void menuLoop() {
     /*
-     * Add some kind of loop here - hint, use while
+     * Add some kind of loop here - hint, use while.
+     *
+     * Put the loop around all code in this method,
+     * so that everything will be repeated for ever
+     * until the user chooses menu option "3 - to quit."
      */
 
     /*
