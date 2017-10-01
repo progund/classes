@@ -37,9 +37,8 @@ public class MemberManager{
     /* 
      * Add some kind of loop here - hint, use while 
      */
-    while(true) {
 
-      /*
+    /*
        * Present options to the user
        */
       cli.msgln("Menu");
@@ -61,8 +60,6 @@ public class MemberManager{
         /*
          * add the member to the ArrayList
          */
-        members.add(m);
-
       } else if (command.equals("2")) {
         cli.msgln("No members?");
         /* loop through the ArrayList and print the members, 
@@ -75,8 +72,6 @@ public class MemberManager{
       } else if (command.equals("3")) {
         cli.msgln("Good bye...");
         saveToFile();
-        break;
-
         /* break out of the loop */
         /* Two ways (chose one):
            1. use the keyword break
