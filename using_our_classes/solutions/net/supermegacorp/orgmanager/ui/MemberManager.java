@@ -1,5 +1,6 @@
 package net.supermegacorp.orgmanager.ui;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -135,6 +136,11 @@ public class MemberManager {
 
   private void saveToFile() {
     try {
+      // First time the application is run, create a file      
+      File f = new File("first_run");
+      if (!f.exists()) {
+        f.createNewFile();
+      }
       FileOutputStream fos = new FileOutputStream(membersFile);
       ObjectOutputStream oos = new ObjectOutputStream(fos);
       oos.writeObject(members);
@@ -150,6 +156,13 @@ public class MemberManager {
   @SuppressWarnings({"unchecked"})
   private void readFromFile() {
     try {
+      // If this is the first run, this file won't exist
+      File f = new File("first_run");
+      if (!f.exists()){
+        System.out.println("Welcome! First run of this program!");
+        return; // Don't read the members, the file
+                // membersFile won't exist either!
+      }
       FileInputStream fis = new FileInputStream(membersFile);
       ObjectInputStream ois = new ObjectInputStream(fis);
       Object readObject = ois.readObject();
