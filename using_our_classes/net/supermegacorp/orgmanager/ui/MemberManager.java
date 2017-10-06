@@ -58,10 +58,10 @@ public class MemberManager {
     if (command.equals("1")) {
       Member m = cli.readNewMember();
       cli.msgln("Created member: " + m);
-      members.add(m);
       /*
        * add the member to the ArrayList
        */
+
     } else if (command.equals("2")) {
       cli.msgln("No members - you need to add code to add member");
       cli.msgln("and then code to print 'em out");
@@ -70,7 +70,7 @@ public class MemberManager {
       */
 
       for (Member m : members) {
-        cli.outputMember(m);
+        ; // print it here, using the cli and the outputMember method
       }
     } else if (command.equals("3")) {
       cli.msgln("Good bye...");
