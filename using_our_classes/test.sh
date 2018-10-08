@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 SESSION_LOG=session.log
 
