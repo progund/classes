@@ -19,6 +19,7 @@ public class Time {
   public int seconds() {
     return seconds.intValue();
   }
+
   public int minutes() {
     return minutes.intValue();
   }
