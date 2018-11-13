@@ -1,7 +1,6 @@
 package org.juneday.time;
 
 public class Time {
-
   
   private TimeUnit hours;
   private TimeUnit minutes;
@@ -23,6 +22,7 @@ public class Time {
   public int minutes() {
     return minutes.intValue();
   }
+  
   public int hours() {
     return hours.intValue();
   }
