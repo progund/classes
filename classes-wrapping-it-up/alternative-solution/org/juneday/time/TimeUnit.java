@@ -1,6 +1,7 @@
 package org.juneday.time;
 
 public abstract class TimeUnit {
+  
   private int limit;
   private int value;
   private TimeUnit nextUnit;
@@ -36,6 +37,7 @@ public abstract class TimeUnit {
 
   @Override
   public String toString() {
+    // Important: Use polymorphic call to intValue()!
     return String.format("%02d", intValue());
   }  
   
