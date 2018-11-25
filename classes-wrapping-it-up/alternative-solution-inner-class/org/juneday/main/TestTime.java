@@ -57,8 +57,46 @@ public class TestTime {
     testIllegal(23, 59, -1);
     testIllegal(23, -1, 59);
     testIllegal(-1, 59, 59);
+
+    testConstructorAndAccessors();
+    System.out.println("Test of every legal time passed.");
+    System.out.println("Showing visual clock at ultra speed");
+    showAll();
   }
 
+  static void showAll() {
+    for (int h = 0; h < 24; h++) {
+      for (int m = 0; m < 60; m++) {
+        for (int s = 0; s < 60; s++) {
+          System.out.print("\r" + new Time(h, m, s));
+          if (m == 0 && s == 0 || m == 59 && s == 59) {
+            try { Thread.currentThread().sleep(100); } catch (Exception i) {}
+            System.out.println();
+          }
+          try { Thread.currentThread().sleep(1); } catch (Exception i) {}
+        }
+      }
+    }
+    System.out.println();
+  }
+
+  static void testConstructorAndAccessors() {
+    for (int h = 0; h < 24; h++) {
+      for (int m = 0; m < 60; m++) {
+        for (int s = 0; s < 60; s++) {
+          Time t = new Time(h, m, s);
+          assert t.hours() == h &&
+            t.minutes() == m &&
+            t.seconds() == s :
+          "Failed constructor and accessors for (" +
+            h + ", " + m + ", " + s + ") Got: " +
+            t.hours() + "hrs, " + t.minutes() + "mins, " +
+            t.seconds() + "secs.";
+        }
+      }
+    }
+  }
+  
   static void testIllegal(int hour, int minute, int second) {
     try {
       Time t = new Time(hour, minute, second);
