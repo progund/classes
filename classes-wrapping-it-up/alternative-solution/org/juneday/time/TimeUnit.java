@@ -42,8 +42,6 @@ public abstract class TimeUnit {
 
   @Override
   public String toString() {
-    // Important: Use polymorphic call to intValue()!
-    //return String.format("%02d", intValue());
     return String.format("%02d", value);
   }  
   
