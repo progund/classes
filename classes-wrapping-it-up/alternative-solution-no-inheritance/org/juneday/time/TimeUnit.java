@@ -12,6 +12,11 @@ public class TimeUnit {
       throw new IllegalArgumentException(this.getClass().getName() +
                                 " cannot exceed " + limit);
     }
+    if (value < 0) {
+      throw new IllegalArgumentException(this.getClass().getName() +
+                                         " value cannot be negative: " +
+                                         value);
+    }
     this.value = value;
   }
 
