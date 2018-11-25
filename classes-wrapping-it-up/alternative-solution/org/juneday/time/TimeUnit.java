@@ -10,7 +10,12 @@ public abstract class TimeUnit {
     this.limit = limit;
     if (value >= limit) {
       throw new IllegalArgumentException(this.getClass().getName() +
-                                " cannot exceed " + limit);
+                                         " cannot exceed " + limit);
+    }
+    if (value < 0) {
+      throw new IllegalArgumentException(this.getClass().getName() +
+                                         " value cannot be negative: " +
+                                         value);
     }
     this.value = value;
   }
@@ -38,7 +43,8 @@ public abstract class TimeUnit {
   @Override
   public String toString() {
     // Important: Use polymorphic call to intValue()!
-    return String.format("%02d", intValue());
+    //return String.format("%02d", intValue());
+    return String.format("%02d", value);
   }  
   
 }
